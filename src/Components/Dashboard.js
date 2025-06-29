@@ -59,8 +59,11 @@ function Dashboard() {
         if (!userLoggedIn) {
             navigate("/login");
         } else if (currentUser) {
-            testFirestore();
-            loadUserHealthData();
+            const initializeData = async () => {
+               await testFirestore();
+               await loadUserHealthData();
+            };
+            initializeData();
         }
     }, [userLoggedIn, navigate, currentUser]);
 
